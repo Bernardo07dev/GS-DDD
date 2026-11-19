@@ -6,8 +6,11 @@ import br.com.fiap.filainvisivel.model.Alerta;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.regex.Pattern;
 
 public class AlertaFactory {
+
+    private static final Pattern PADRAO_ANONIMIZADO = Pattern.compile("^anon-[0-9a-f]{8}-\\*\\*\\*.{1,2}$");
 
     private AlertaFactory() {
     }
@@ -23,7 +26,7 @@ public class AlertaFactory {
         }
 
         String limpo = contato.trim();
-        if (limpo.startsWith("anon-") || limpo.contains("***")) {
+        if (PADRAO_ANONIMIZADO.matcher(limpo).matches()) {
             return limpo;
         }
 

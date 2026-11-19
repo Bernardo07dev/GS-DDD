@@ -19,11 +19,10 @@ O **Fila Invisível** recebe registros de movimentação de fila e previsões de
 
 - **Java 21**
 - **Spring Boot 3.3.4** (Maven Wrapper)
-- **Spring Web** (Endpoints RESTful)
+- **Spring Web** (API RESTful JSON)
 - **Spring JDBC (`JdbcTemplate`)** (Camada DAO com SQL explícito)
 - **Oracle JDBC (`ojdbc11`)** (Banco de Dados Oracle FIAP)
 - **Jakarta Bean Validation** (Validação declarativa nos DTOs)
-- **springdoc-openapi (`2.6.0`)** (Swagger UI em `/swagger-ui.html`)
 
 ---
 
@@ -32,7 +31,7 @@ O **Fila Invisível** recebe registros de movimentação de fila e previsões de
 ```text
 src/main/java/br/com/fiap/filainvisivel/
 ├── FilaInvisivelApplication.java
-├── config/             # WebConfig (CORS), OpenApiConfig (Swagger) e DatabaseInitializer (DDL + seed)
+├── config/             # WebConfig (CORS)
 ├── model/              # Ubs, Especialidade, RegistroFila, Previsao, Alerta, Semaforo (Enum)
 ├── factory/            # PrevisaoFactory (cálculo do semáforo) e AlertaFactory (anonimização)
 ├── dto/
@@ -105,7 +104,7 @@ src/main/java/br/com/fiap/filainvisivel/
 | `PUT` | `/api/alertas/{id}` | Atualiza alerta | `200 OK` |
 | `DELETE` | `/api/alertas/{id}` | Remove alerta | `204 No Content` |
 
-Respostas de erro padronizadas via `GlobalExceptionHandler`: `400 Bad Request`, `404 Not Found`, `409 Conflict` e `500 Internal Server Error`.
+Respostas de erro padronizadas via `GlobalExceptionHandler`: `400 Bad Request`, `404 Not Found`, `405 Method Not Allowed`, `409 Conflict` e `500 Internal Server Error`.
 
 ---
 
@@ -128,25 +127,20 @@ Respostas de erro padronizadas via `GlobalExceptionHandler`: `400 Bad Request`, 
 .\mvnw.cmd clean package
 ```
 
-### Swagger UI
-- **Documentação interativa:** `http://localhost:8080/swagger-ui.html`
-- **OpenAPI JSON:** `http://localhost:8080/api-docs`
-
 ### Variáveis de Ambiente (Oracle / Deploy)
-As configurações em [application.properties](file:///C:/Users/berna/Documents/Projects/GS-DDD/src/main/resources/application.properties) usam variáveis de ambiente com fallback para o ambiente FIAP:
+As configurações em [application.properties](src/main/resources/application.properties) usam variáveis de ambiente com fallback para o ambiente FIAP:
 - `PORT` (padrão `8080`)
 - `DB_URL` (padrão `jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL`)
 - `DB_USER`
 - `DB_PASSWORD`
 
 ### Deploy no Render.com
-1. Suba o repositório no GitHub (`Bernardo07dev/GS-DDD`) com o [Dockerfile](file:///C:/Users/berna/Documents/Projects/GS-DDD/Dockerfile) na raiz.
-2. No painel do Render, crie um **Web Service** conectado ao repositório — o Render detecta automaticamente o `Dockerfile` (`Runtime: Docker`).
-3. Configure as variáveis de ambiente (`DB_URL`, `DB_USER`, `DB_PASSWORD`) e aguarde o build concluir.
+- **URL base em produção:** [https://gs-ddd-upj0.onrender.com](https://gs-ddd-upj0.onrender.com)
+- **Exemplo GET em produção:** `https://gs-ddd-upj0.onrender.com/api/ubs`
 
 ---
 
 ## Banco de Dados e Documentação
 
-- DDL completo para Oracle: [schema.sql](file:///C:/Users/berna/Documents/Projects/GS-DDD/schema.sql) e [src/main/resources/schema.sql](file:///C:/Users/berna/Documents/Projects/GS-DDD/src/main/resources/schema.sql)
-- Documentação completa da entrega (PDF único): [Fila-Invisivel-Documentacao-GS-DDD.pdf](file:///C:/Users/berna/Documents/Projects/GS-DDD/Fila-Invisivel-Documentacao-GS-DDD.pdf)
+- DDL completo para Oracle: [schema.sql](schema.sql)
+- Documentação completa da entrega (PDF único): [Fila-Invisivel-Documentacao-GS-DDD.pdf](Fila-Invisivel-Documentacao-GS-DDD.pdf)

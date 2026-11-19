@@ -13,6 +13,7 @@ import br.com.fiap.filainvisivel.exception.RegraNegocioException;
 import br.com.fiap.filainvisivel.model.Previsao;
 import br.com.fiap.filainvisivel.model.Ubs;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -50,6 +51,7 @@ public class UbsBo {
         return UbsResponse.fromModel(ubs);
     }
 
+    @Transactional
     public UbsResponse criar(UbsRequest request) {
         validarCampos(request);
         String nomeLimpo = request.nome().trim();
@@ -75,6 +77,7 @@ public class UbsBo {
         return UbsResponse.fromModel(ubs);
     }
 
+    @Transactional
     public UbsResponse atualizar(String id, UbsRequest request) {
         Ubs ubs = buscarEntidadeOuLancarExcecao(id);
         validarCampos(request);

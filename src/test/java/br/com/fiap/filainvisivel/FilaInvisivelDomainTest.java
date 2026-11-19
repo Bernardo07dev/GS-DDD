@@ -67,6 +67,10 @@ class FilaInvisivelDomainTest {
         Alerta jaAnonimizado = AlertaFactory.criar("a2", "u1", "anon-7f8a9b1c-***42", "14:00 - 16:00");
         assertEquals("anon-7f8a9b1c-***42", jaAnonimizado.getContatoAnonimizado());
 
+        Alerta tentativaBypass = AlertaFactory.criar("a3", "u1", "11999991242 ***", "14:00 - 16:00");
+        assertTrue(tentativaBypass.getContatoAnonimizado().startsWith("anon-"));
+        assertFalse(tentativaBypass.getContatoAnonimizado().contains("11999991242"));
+
         assertThrows(RegraNegocioException.class, () -> AlertaFactory.anonimizarContato("   "));
     }
 
