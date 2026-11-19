@@ -134,7 +134,7 @@ public class UbsBo {
         String recomendacao = "Melhor horário para ir à " + ubs.getNome()
                 + " (" + ubs.getBairro() + "): "
                 + melhor.getDataHora().format(FORMATO_DATA_HORA)
-                + " — " + melhor.orientarCidadao();
+                + " - " + melhor.orientarCidadao();
 
         return new MelhorHorarioResponse(
                 ubs.getId(),

@@ -1,17 +1,17 @@
-# Fila Invisível — API RESTful (GS Domain Driven Design)
+# Fila Invisível - API RESTful (GS Domain Driven Design)
 
 API RESTful em **Java 21 + Spring Boot 3.3.4** conectada ao **Oracle Database FIAP**, desenvolvida para a **FIAP Global Solution 2026.2 (CitizenTech)**.
 
-O **Fila Invisível** recebe registros de movimentação de fila e previsões de lotação (geradas pelo módulo de Data Science em Python), persiste no Oracle e orienta o cidadão — como a persona **Dona Marlene (68 anos)** — com o melhor horário para ir à Unidade Básica de Saúde (UBS) por meio de um semáforo simples (**VERDE**, **AMARELO**, **VERMELHO**), alinhado aos **ODS 3, 10 e 11**.
+O **Fila Invisível** recebe registros de movimentação de fila e previsões de lotação (geradas pelo módulo de Data Science em Python), persiste no Oracle e orienta o cidadão (como a persona **Dona Marlene, 68 anos**) com o melhor horário para ir à Unidade Básica de Saúde (UBS) por meio de um semáforo simples (**VERDE**, **AMARELO**, **VERMELHO**), alinhado aos **ODS 3, 10 e 11**.
 
 ---
 
 ## Integrantes da Equipe
 
-- **Bernardo Moreira** — RM 564103
-- **Pedro Batista** — RM 563220
-- **Renan Jordão** — RM 560618
-- **Larissa Shiba** — RM 560462
+- **Bernardo Moreira** - RM 564103
+- **Pedro Batista** - RM 563220
+- **Renan Jordão** - RM 560618
+- **Larissa Shiba** - RM 560462
 
 ---
 
